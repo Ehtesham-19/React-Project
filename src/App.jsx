@@ -1,3 +1,4 @@
+import AddStudentForm from "./Pages/NewStudent";
 import NewTeacher from "./Pages/NewTeacher";
 import Notification from "./Pages/Notification";
 import Sidebar from "./Pages/SideBar";
@@ -12,6 +13,7 @@ function App() {
       <NewTeacher />
       <Notification />
       <Sidebar />
+      <AddStudentForm/>
     </div>
   );
 }
