@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { FiBell } from "react-icons/fi";
 
 export default function NewTeacher() {
@@ -21,13 +22,34 @@ export default function NewTeacher() {
     const { name, value, files } = e.target;
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0].name : value, // just store file name
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    try {
+      // Send the form data to your local API
+      await axios.post("http://localhost:3000/teachers", formData);
+      alert("Teacher added successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        address: "",
+        photo: "",
+        dateOfBirth: "",
+        placeOfBirth: "",
+        university: "",
+        degree: "",
+        startEndDate: "",
+        city: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Error submitting form");
+    }
   };
 
   const handleReset = () => {
@@ -50,7 +72,6 @@ export default function NewTeacher() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
         <div className="flex flex-wrap items-center justify-between mb-6 gap-3">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
             Add New Teacher
@@ -65,7 +86,6 @@ export default function NewTeacher() {
           </div>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit}>
           {/* Personal Details */}
           <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
