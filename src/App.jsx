@@ -1,13 +1,8 @@
-import CreateAssignment from "./Pages/CreateAssignment";
-import MyAssignment from "./Pages/MyAssignment";
-import AddStudentForm from "./Pages/NewStudent";
-import NewTeacher from "./Pages/NewTeacher";
-import Notification from "./Pages/Notification";
-import StudentTable from "./Pages/Students";
-import TeacherDetails from "./Pages/TeacherDetails";
-import Teachers from "./Pages/Teachers";
-import AssignmentDetails from "./Pages/AssignmentDetails";
-import { BrowserRouter as Routers, Routes, Route } from "react-router-dom";
+import Notification from "./Pages/Notification And Layout/Notification";
+import TeacherDetails from "./Pages/TeachersDetails/TeacherDetails";
+import Teachers from "./Pages/All Teacher/Teachers";
+import NewTeacher from "./Pages/Add New Teacher/NewTeacher";
+import Sidebar from "./Pages/SideBar/SideBar";
 import "./index.css";
 
 function App() {
@@ -17,14 +12,7 @@ function App() {
       <TeacherDetails />
       <Teachers />
       <NewTeacher />
-      <StudentTable />
-      <AddStudentForm />
-      <MyAssignment />
-      <CreateAssignment />
-        <Routes>
-          <Route path="/assignments" element={<MyAssignment />} />
-          <Route path="/assignments/:id" element={<AssignmentDetails />} />
-        </Routes>
+      <Sidebar />
     </div>
   );
 }
